@@ -1,0 +1,9 @@
+# Set PHP time zone to India Time Zone
+php_value date.timezone "Asia/Kolkata"
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+

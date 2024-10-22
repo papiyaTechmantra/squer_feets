@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+
+    <title>Studio Sesh</title>
+  </head>
+  <body>
+
+    <header class="dash__bar fixed-top">
+    <div class="container-fluid">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-12 col-md-3">
+          <a href="index.html" class="dashbar__logo">
+            <img src="images/logo.png">
+          </a>
+          <a href="javascript:void(0);" class="toggle__btn2"><i class="fas fa-bars"></i></a>
+          <div class="search__tab">
+            <form>
+              <a class="search__icon2" href="#"><img src="images/search-dark.svg"></a>
+            </form>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="search__bar align-item-center">
+            <form class="search__bar2">
+              <a class="search__btn" href="#"><img src="images/search-dark.svg"></a>
+              <input class="search__input" type="search" name="" placeholder="Search…">
+            </form>
+          </div>
+        </div>
+        <div class="col-9 col-md-3">
+          <div class="dash__option">
+            <a href="add_property.html" class="dash__property"><span class="property__icon"><img src="images/plus.svg"></span>Add Property</a>
+            <a href="#" class="dash__notification"><img src="images/close-envelope.svg"><span>2</span></a>
+            <a href="#" class="dash__notification"><img src="images/notification.svg"><span>1</span></a>
+          </div>
+        </div>
+        <div class="col-3 col-md-2">
+          <div class="user__profile">
+            <div class="user__dropdown dropdown">
+              <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="images/user-pic.png"> <span class="property__text">James Morris</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#"><img src="images/user-dark.svg">My Profile</a>
+                <a class="dropdown-item" href="#"><img src="images/edit.svg">Edit Profile</a>
+                <a class="dropdown-item" href="#"><img src="images/logout.svg">Log Out</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+    <div class="clearfix"></div>
+
+    <section class="dash__menu d__none">
+      <div class="dash__menu__list">
+        <ul>
+          <li><a href="#"><img src="images/dashboard.svg"><span>Dashboard</span></a></li>
+          <li><a href="#"><img src="images/properties.svg"><span>All Properties</span></a></li>
+          <li><a href="#"><img src="images/calender.svg"><span>Calendar</span></a></li>
+          <li><a href="#"><img src="images/chat.svg"><span>Sesh Chat</span></a></li>
+          <li><a href="#"><img src="images/booking.svg"><span>Booking</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="dashboard__home">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 col-md-12">
+            <h4 class="dash__title">Booking</h4>
+          </div>
+          <div class="col-12 col-md-12">
+            <div class="add__property">
+              <p class="property_title"><img src="images/home.svg">Property Name</p>
+              <div>
+                <form>
+                  <h5 class="property__section__title">Choose Category</h5>
+                  <div class="role__select--mod">
+                    <div class="custom-control custom-checkbox">
+                      <label class="select__box--mod" for="customCheck1" value="">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                        <img src="images/studio.svg">
+                        Studio
+                      </label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <label class="select__box--mod active" for="customCheck1" value="">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                        <img src="images/urban.svg">
+                        Gallery
+                      </label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <label class="select__box--mod" for="customCheck1" value="">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                        <img src="images/urban_1.svg">
+                        Venue
+                      </label>
+                    </div>
+                  </div>
+                  <h5 class="property__section__title">Property Information</h5>
+                  <div class="property__form">
+                    <div class="form-row">
+                      <div class="form-group form-group--mod col-md-6">
+                        <img src="images/home-title.svg">
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="Title">
+                      </div>
+                      <div class="form-group form-group--mod col-md-6">
+                        <img src="images/phone.svg">
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Phone Number">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group form-group--mod col-md-6">
+                        <img src="images/email.svg">
+                        <input type="email" class="form-control" id="inputAddress" placeholder="Email">
+                      </div>
+                      <div class="form-group form-group--mod col-md-6">
+                        <img src="images/dollar.svg">
+                        <input type="text" class="form-control" id="inputAddress2" placeholder="Hourly Rate">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group--mod col-md-12">
+                        <img src="images/contract.svg">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description"></textarea>
+                      </div>
+                      <div class="form-group--mod col-md-12">
+                        <img src="images/maps-and-flags.svg">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Address"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="property__location">
+                    <div class="location__pin">
+                      <img src="images/location_pin.svg">
+                    </div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3060710.477723947!2d-101.92419381010713!3d41.483140050595644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87938dc8b50cfced%3A0xa127900c0ff30ac4!2sNebraska%2C%20USA!5e0!3m2!1sen!2sin!4v1569846118004!5m2!1sen!2sin" height="418" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                  </div>
+
+                  <h5 class="property__section__title">Upload Image & Video</h5>
+
+                  <div class="slider addmore__area">
+                    <div>
+                      <a href="javascript:void(0)" class="add__more js-add-slide">
+                        <div class="add__btn">
+                          <img src="images/add_image.svg"> Add More
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+
+                  <h5 class="property__section__title">Additional Services</h5>
+                  <div class="property__form">
+                    <div class="form-row">
+                      <div class="form-group form-group--mod col-8 col-sm-10">
+                        <img src="images/gear.svg">
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="Services Title">
+                      </div>
+                      <div class="form-group form-group--mod col-4 col-sm-2">
+                        <img src="images/dollar.svg">
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Price ( USD )">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group form-group--mod col-8 col-sm-10">
+                        <img src="images/gear.svg">
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Services Title">
+                      </div>
+                      <div class="form-group form-group--mod col-4 col-sm-2">
+                        <img src="images/dollar.svg">
+                        <input type="text" class="form-control" id="inputAddress2" placeholder="Price ( USD )">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group form-group--mod col-8 col-sm-10">
+                        <img src="images/gear.svg">
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Services Title">
+                      </div>
+                      <div class="form-group form-group--mod col-4 col-sm-2">
+                        <img src="images/dollar.svg">
+                        <input type="text" class="form-control" id="inputAddress2" placeholder="Price ( USD )">
+                      </div>
+                    </div>
+                    <a href="#" class="btn__add__more"><img src="images/add-more-color.svg">Add More</a>
+                  </div>
+                  <h5 class="property__section__title">Socials</h5>
+                  <div class="property__form">
+                    <div class="form-row">
+                      <div class="form-group form-group--mod col-12 col-sm-4">
+                        <img src="images/social1.svg">
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="Twitter Url">
+                      </div>
+                      <div class="form-group form-group--mod col-12 col-sm-4">
+                        <img src="images/social2.svg">
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Facebook Url">
+                      </div>
+                      <div class="form-group form-group--mod col-12 col-sm-4">
+                        <img src="images/social3.svg">
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Google+ Url">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group form-group--mod col-12 col-sm-4">
+                        <img src="images/social4.svg">
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="Linked In Url">
+                      </div>
+                      <div class="form-group form-group--mod col-12 col-sm-4">
+                        <img src="images/social5.svg">
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Youtube Url">
+                      </div>
+                      <div class="form-group form-group--mod col-12 col-sm-4">
+                        <img src="images/social6.svg">
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Instagram Url">
+                      </div>
+                    </div>
+                  </div>
+                  <h5 class="property__section__title">Amenities</h5>
+                  <div class="amenities">
+                    <div class="form-row">
+                      <div class="custom-control custom-checkbox col-12 col-sm-3">
+                        <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing"><img src="images/amenities1.svg">Wireles Internet</label>
+                      </div>
+                      <div class="custom-control custom-checkbox col-12 col-sm-3">
+                        <input class="custom-control-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                        <label class="custom-control-label" for="inlineCheckbox2"><img src="images/amenities2.svg">Smoking Zone</label>
+                      </div>
+                      <div class="custom-control custom-checkbox col-12 col-sm-3">
+                        <input class="custom-control-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <label class="custom-control-label" for="inlineCheckbox3"><img src="images/amenities3.svg">Accept Credit Card</label>
+                      </div>
+                      <div class="custom-control custom-checkbox col-12 col-sm-3">
+                        <input class="custom-control-input" type="checkbox" id="inlineCheckbox4" value="option3">
+                        <label class="custom-control-label" for="inlineCheckbox4"><img src="images/amenities4.svg">Push Back Seats</label>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="custom-control custom-checkbox col-12 col-sm-3">
+                        <input class="custom-control-input" type="checkbox" id="inlineCheckbox5" value="option1">
+                        <label class="custom-control-label" for="inlineCheckbox5"><img src="images/amenities5.svg">Air Conditioner</label>
+                      </div>
+                      <div class="custom-control custom-checkbox col-12 col-sm-3">
+                        <input class="custom-control-input" type="checkbox" id="inlineCheckbox6" value="option2">
+                        <label class="custom-control-label" for="inlineCheckbox6"><img src="images/amenities6.svg">Botanical Garden</label>
+                      </div>
+                      <div class="custom-control custom-checkbox col-12 col-sm-3">
+                        <input class="custom-control-input" type="checkbox" id="inlineCheckbox7" value="option3">
+                        <label class="custom-control-label" for="inlineCheckbox7"><img src="images/amenities7.svg">Car Park</label>
+                      </div>
+                      <div class="custom-control custom-checkbox col-12 col-sm-3">
+                        <input class="custom-control-input" type="checkbox" id="inlineCheckbox8" value="option3">
+                        <label class="custom-control-label" for="inlineCheckbox8"><img src="images/amenities8.svg">Private Room</label>
+                      </div>
+                    </div>
+                  </div>
+                  <h5 class="property__section__title">Open Hours</h5>
+                  <div class="opening__hours table-responsive">
+                    <table class="table table-borderless text-center">
+                      <thead>
+                        <tr>
+                          <th scope="col">Day</th>
+                          <th scope="col">Start Time</th>
+                          <th scope="col">End Time</th>
+                          <th scope="col">
+                            <div class="custom-control custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="closeall" value="option3">
+                              <label class="custom-control-label" for="closeall">Close All Day</label>
+                            </div>
+                          </th>
+                          <th scope="col">
+                            <div class="custom-control custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="startall" value="option3">
+                              <label class="custom-control-label" for="startall">Start All Day</label>
+                            </div>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th>Sunday</th>
+                          <td><div class="start_time"><p><img src="images/clock-open.svg">8 : 30</p></div></td>
+                          <td><div class="start_time"><p><img src="images/clock-open.svg">8 : 30</p></div></td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="inlineCheckbox9" value="option3">
+                              <label class="custom-control-label" for="inlineCheckbox9"></label>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="inlineCheckbox10" value="option3">
+                              <label class="custom-control-label" for="inlineCheckbox10"></label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Monday</th>
+                          <td><div class="start_time"><p><img src="images/clock-open.svg">8 : 30</p></div></td>
+                          <td><div class="start_time"><p><img src="images/clock-open.svg">8 : 30</p></div></td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="inlineCheckbox11" value="option3">
+                              <label class="custom-control-label" for="inlineCheckbox11"></label>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="inlineCheckbox12" value="option3">
+                              <label class="custom-control-label" for="inlineCheckbox12"></label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Tuesday</th>
+                          <td><div class="start_time"><p><img src="images/clock-open.svg">8 : 30</p></div></td>
+                          <td><div class="start_time"><p><img src="images/clock-open.svg">8 : 30</p></div></td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="inlineCheckbox13" value="option3">
+                              <label class="custom-control-label" for="inlineCheckbox13"></label>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="inlineCheckbox14" value="option3">
+                              <label class="custom-control-label" for="inlineCheckbox14"></label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Wedday</th>
+                          <td><div class="start_time"><p><img src="images/clock-open.svg">8 : 30</p></div></td>
+                          <td><div class="start_time"><p><img src="images/clock-open.svg">8 : 30</p></div></td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="inlineCheckbox15" value="option3">
+                              <label class="custom-control-label" for="inlineCheckbox15"></label>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="inlineCheckbox16" value="option3">
+                              <label class="custom-control-label" for="inlineCheckbox16"></label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Thursday</th>
+                          <td><div class="start_time"><p><img src="images/clock-open.svg">8 : 30</p></div></td>
+                          <td><div class="start_time"><p><img src="images/clock-open.svg">8 : 30</p></div></td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="inlineCheckbox17" value="option3">
+                              <label class="custom-control-label" for="inlineCheckbox17"></label>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="inlineCheckbox18" value="option3">
+                              <label class="custom-control-label" for="inlineCheckbox18"></label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Friday</th>
+                          <td><div class="start_time"><p><img src="images/clock-open.svg">8 : 30</p></div></td>
+                          <td><div class="start_time"><p><img src="images/clock-open.svg">8 : 30</p></div></td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="inlineCheckbox19" value="option3">
+                              <label class="custom-control-label" for="inlineCheckbox19"></label>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="inlineCheckbox20" value="option3">
+                              <label class="custom-control-label" for="inlineCheckbox20"></label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Satuday</th>
+                          <td><div class="start_time"><p><img src="images/clock-open.svg">8 : 30</p></div></td>
+                          <td><div class="start_time"><p><img src="images/clock-open.svg">8 : 30</p></div></td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="inlineCheckbox21" value="option3">
+                              <label class="custom-control-label" for="inlineCheckbox21"></label>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="inlineCheckbox22" value="option3">
+                              <label class="custom-control-label" for="inlineCheckbox22"></label>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <button type="submit" class="btn btn__publish">Publish</button>
+
+                  <!-- <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#gallery45">gallery45</button>
+    <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#gallery46">gallery46</button> -->
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+
+    <div class="modal gallery_modal fade bd-example-modal-lg" id="gallery45" tabindex="-1" role="dialog" aria-labelledby="galleryTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"><img src="images/cross.svg"></span>
+            </button>
+            <div class="change_picture">
+              <a href="#">Make Profile Picture</a>
+              <a href="#">Make Cover Picture</a>
+            </div>
+            <button type="button" class="btn-prev"><img src="images/arrow_left.svg"></button>
+            <button type="button" class="btn-next"><img src="images/arrow_right.svg"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal gallery_modal fade bd-example-modal-lg" id="gallery46" tabindex="-1" role="dialog" aria-labelledby="galleryTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"><img src="images/cross.svg"></span>
+            </button>
+            <div class="change_picture">
+              <a href="#">Make Profile Picture</a>
+              <a href="#">Make Cover Picture</a>
+            </div>
+            <button type="button" class="btn-prev"><img src="images/arrow_left.svg"></button>
+            <button type="button" class="btn-next"><img src="images/arrow_right.svg"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+    <script type="text/javascript" src="js/slick.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.toggle__btn').click(function(){
+          $('#mobile__nav').toggleClass('d-none');
+        });
+       $('.addmore__area').slick({
+          slidesToShow: 7,
+          slidesToScroll: 1,
+          infinite: false,
+          responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 3
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 2
+              }
+            }
+          ]
+        });
+        var slideIndex = 1;
+
+        $('.js-add-slide').on('click', function() {
+            slideIndex++;
+            $('.addmore__area').slick('slickAdd','<div><div class="upload__image"><div class="imagePreview" data-toggle="modal" data-target="#gallery'+ slideIndex +'"></div><label><img src="images/add_image.svg">Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div></div>');
+            $('<div class="modal gallery_modal fade bd-example-modal-lg" id="gallery'+ slideIndex +'" tabindex="-1" role="dialog" aria-labelledby="galleryTitle" aria-hidden="true">\
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">\
+        <div class="modal-content">\
+          <div class="modal-body">\
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">\
+              <span aria-hidden="true"><img src="images/cross.svg"></span>\
+            </button>\
+            <div class="change_picture">\
+              <a href="#">Make Profile Picture</a>\
+              <a href="#">Make Cover Picture</a>\
+            </div>\
+            <a href="#" class="btn-prev"><img src="images/arrow_left.svg"></a>\
+            <a href="#" class="btn-next"><img src="images/arrow_right.svg"></a>\
+          </div>\
+        </div>\
+      </div>\
+    </div>').insertAfter(".addmore__area");
+        });
+        
+
+        $('.js-remove-slide').on('click', function() {
+            $('.addmore__area').next('.modal').remove();
+            $('.addmore__area').slick('slickRemove',slideIndex - 1);
+            if (slideIndex !== 0){
+                slideIndex--;
+            }
+        });
+
+               
+
+        $(document).on("click", "i.del" , function() {
+          $(this).parent().parent().remove();
+        });
+        $(document).on("click", "a.btn-next" , function() {
+          //alert();
+        });
+
+
+        // $(document).on("each", "div[id^='myModal']" , function() {
+        //   var currentModal = $(this);
+        //   console.log(currentModal);
+
+        //   currentModal.find('.btn-next').click(function(){
+        //     currentModal.modal('hide');
+        //     currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show'); 
+        //   });
+        // });
+
+
+
+
+        $(function() {
+            $(document).on("change",".uploadFile", function()
+            {
+                var uploadFile = $(this);
+                var files = !!this.files ? this.files : [];
+                if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+         
+                if (/^image/.test( files[0].type)){ // only image file
+                    var reader = new FileReader(); // instance of the FileReader
+                    reader.readAsDataURL(files[0]); // read the local file
+         
+                    reader.onloadend = function(){ // set image data as background of div
+                        //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+        uploadFile.closest(".upload__image").find('.imagePreview').css({"background-image": "url("+this.result+")", "display": "block"});
+        $('<img src="'+this.result+'" class="img-fluid">').insertBefore(".change_picture");
+                    }
+                }
+              
+            });
+        });
+       });
+    </script>
+    <script>
+      $(document).ready(function(){
+        $(".search__tab").click(function(){
+          $(".search__bar2").toggleClass("d_block");
+        });
+        $('.toggle__btn2').click(function(){
+          $('.dash__menu').toggleClass('d__none');
+        });
+      });
+    </script>
+  </body>
+</html>
