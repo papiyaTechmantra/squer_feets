@@ -142,13 +142,21 @@ class IndexController extends Controller
         return view('property_listing', ['Property_listing'=>$Property_listing,'Locality'=>$Locality]);
     }
 
-    public function property_details($id){
-        $Property_details=Property::find($id);
-        $Property_variation=Property_variation::where('property_id', $id)->get();
-        $Property_Images=Property_image::where('property_id', $id)->get();
-        $Locality=Locality::all();
-        return view('property_details', ['Property_details'=>$Property_details,'Property_variation'=>$Property_variation,'Property_Images'=>$Property_Images,'Locality'=>$Locality]);
+    public function property_details($slug, $uid) {
+        $Property_details = Property::where('slug', $slug)->where('uid', $uid)->firstOrFail();
+    
+        $Property_variation = Property_variation::where('property_id', $Property_details->id)->get();
+        $Property_Images = Property_image::where('property_id', $Property_details->id)->get();
+        $Locality = Locality::all();
+    
+        return view('property_details', [
+            'Property_details' => $Property_details,
+            'Property_variation' => $Property_variation,
+            'Property_Images' => $Property_Images,
+            'Locality' => $Locality
+        ]);
     }
+    
 
     /**
      * Show the form for creating a new resource.

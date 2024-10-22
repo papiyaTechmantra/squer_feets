@@ -62,6 +62,12 @@
             <p class="small text-danger">{{ $message }}</p>
         @enderror
 
+        <label for="brochure">Upload Brochure</label>
+        <input type="file" class="form-control" name="brochure" id="brochure">
+        @error('brochure')
+            <p class="small text-danger">{{ $message }}</p>
+        @enderror
+        
         <label class="form-check-label" for="flexCheckDefault">
             Select Amenities
         </label>

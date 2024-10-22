@@ -211,7 +211,7 @@
                                         <div class="space__list__details">
                                           <img src="{{ asset($Property->image) }}">
                                           <div class="list__caption">
-                                              <a class="view__btn" href="{{ route('front.property.details', $Property->id) }}"><h5>{{ $Property->title }}</h5></a>
+                                              <a class="view__btn" href="{{ route('front.property.details', ['slug' => $Property->slug, 'uid' => $Property->uid]) }}"><h5>{{ $Property->title }}</h5></a>
                                                 <h6><img src="{{ asset('Front/images/map-pin.svg') }}">
                                                     {{ $Property->location }} </h6>
                                                 <ul>
@@ -230,7 +230,7 @@
 
                                                         <div class="list__footer">
                                                             <h2>₹{{ $Property->price }}</h2>
-                                                            <a class="view__btn" href="{{ route('front.property.details', $Property->id) }}">View Details</a>
+                                                            <a class="view__btn" href="{{ route('front.property.details', ['slug' => $Property->slug, 'uid' => $Property->uid]) }}">View Details</a>
                                                         </div>
                                             </div>
                                     </li>
@@ -243,7 +243,7 @@
                                         <div class="space__list__details">
                                           <img src="{{ asset($Property->image) }}">
                                           <div class="list__caption">
-                                              <a class="view__btn" href="{{ route('front.property.details', $Property->id) }}"><h5>{{ $Property->title }}</h5></a>
+                                              <a class="view__btn" href="{{ route('front.property.details', ['slug' => $Property->slug, 'uid' => $Property->uid]) }}"><h5>{{ $Property->title }}</h5></a>
                                                 <h6><img src="{{ asset('Front/images/map-pin.svg') }}">
                                                     {{ $Property->location }} </h6>
                                                 <ul>
@@ -262,7 +262,7 @@
 
                                                         <div class="list__footer">
                                                             <h2>₹{{ $Property->price }}</h2>
-                                                            <a class="view__btn" href="{{ route('front.property.details', $Property->id) }}">View Details</a>
+                                                            <a class="view__btn" href="{{ route('front.property.details', ['slug' => $Property->slug, 'uid' => $Property->uid]) }}">View Details</a>
                                                         </div>
                                             </div>
                                         </div>
@@ -276,7 +276,7 @@
                                         <div class="space__list__details">
                                             <img src="{{ asset($Property->image) }}">
                                             <div class="list__caption">
-                                                <a class="view__btn" href="{{ route('front.property.details', $Property->id) }}"><h5>{{ $Property->title }}</h5></a>
+                                                <a class="view__btn" href="{{ route('front.property.details', ['slug' => $Property->slug, 'uid' => $Property->uid]) }}"><h5>{{ $Property->title }}</h5></a>
                                                 <h6><img src="{{ asset('Front/images/map-pin.svg') }}">
                                                     {{ $Property->location }} </h6>
                                                 <ul>
@@ -295,7 +295,7 @@
 
                                                         <div class="list__footer">
                                                             <h2>₹{{ $Property->price }}</h2>
-                                                            <a class="view__btn" href="{{ route('front.property.details', $Property->id) }}">View Details</a>
+                                                            <a class="view__btn" href="{{ route('front.property.details', ['slug' => $Property->slug, 'uid' => $Property->uid]) }}">View Details</a>
                                                         </div>
                                             </div>
                                         </div>
@@ -432,7 +432,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-12">
-                    <h2 class="title1">Testimonials</h2>
+                    <h2 class="title1">What Our Clients Say: Stories of Success, Trust, and Collaboration</h2>
                     <p class="subtitle1">See what our clients say about us</p>
                 </div>
                 <div class="col-12 col-md-8">
@@ -463,7 +463,7 @@
                 <div class="col-12 col-md-12">
                     <h2 class="title1">Stay tuned for meaningful Real Estate news from across the country</h2>
                     <div class="subscription_box">
-                        
+
                         <div class="subscription_banner">
                             <img src="{{ asset('Front/images/form_img.png')}}">
                         </div>

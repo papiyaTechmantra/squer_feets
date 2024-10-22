@@ -57,6 +57,15 @@
         @error('image')
             <p class="small text-danger">{{ $message }}</p>
         @enderror
+
+        <label for="brochure">Upload Property Brochure (PDF)</label>
+            <a href="{{ asset($Property_list->brochure) }}" target="_blank">View Brochure</a>
+        <input type="file" class="form-control" name="brochure" id="brochure" accept="application/pdf">
+        @error('brochure')
+            <p class="small text-danger">{{ $message }}</p>
+        @enderror
+
+
         
         <label for="floor_plan_image">Upload floor plan image</label>
         <img src="{{ asset($Property_list->floor_plan_image) }}" alt="" style="width: 100px;">

@@ -62,23 +62,37 @@
                   @foreach ($Property_Images as $Images)
                     <div class="banner_item">
                       <img src="{{ asset($Images->images) }}">
+                      <button id="share-button" class="btn btn-secondary">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
                     </div>
+                    <!-- Share Modal -->
+                    
+
+                    
+
                   @endforeach
               </div>
               <div class="property_excerpt">
-                <div class="row">
-                  <div class="col-sm-9">
-                    <h2>{{$Property_details->title}}</h2>
-                    <div class="property_address">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                      <p>{{$Property_details->location}}</p>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h2>{{ $Property_details->title }}</h2>
+                            <div class="property_address">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <p>{{ $Property_details->location }}</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <h4>₹ {{ $Property_details->price }}*</h4>
+                            <div class="details_card">
+                                <a href="{{ asset($Property_details->brochure) }}" class="btn btn-primary" download>Download Brochure</a>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <h4>₹ {{ $Property_details->price }}*</h4>
-                  </div>
                 </div>
-              </div>
             </div>
 
             <div class="details_card">
@@ -180,6 +194,18 @@
                 
                 @endforeach
               </table>
+              <div id="share-modal" class="modal" style="display:none;">
+                        <div class="modal-content">
+                            <span id="close-modal" class="close">&times;</span>
+                            <h2>Share this property</h2>
+                            <a href="https://wa.me/?text={{ urlencode('Check out this property: ' . route('front.property.details', ['slug' => $Property_details->slug, 'uid' => $Property_details->uid])) }}" target="_blank" class="btn btn-success">
+                                <i class="fab fa-whatsapp"></i> Share on WhatsApp
+                            </a>
+                            <a href="mailto:?subject=Check out this property&body=Check out this property: {{ route('front.property.details', ['slug' => $Property_details->slug, 'uid' => $Property_details->uid]) }}" class="btn btn-primary">
+                                <i class="fas fa-envelope"></i> Share via Email
+                            </a>
+                        </div>
+                    </div>
             </div>
 
             <div class="details_card">

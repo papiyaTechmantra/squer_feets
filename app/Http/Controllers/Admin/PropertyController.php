@@ -9,6 +9,8 @@ use App\Models\Property_image;
 use App\Models\Property_variation;
 use App\Models\Amenity;
 use App\Models\Locality;
+use Illuminate\Support\Str;
+
 
 class PropertyController extends Controller
 {
@@ -49,8 +51,6 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-        
-        // dd($request->all());
         $request->validate([
             "title" => ['required'],
             "category" => ['required'],
@@ -61,46 +61,48 @@ class PropertyController extends Controller
             "property_Status" => ['required'],
             "Configurations" => ['required'],
             "ameniti_id" => ['required'],
-            "status"=> ['required'],
-            "added_by"=> ['required'],
+            "status" => ['required'],
+            "added_by" => ['required'],
             "image" => 'required|mimes:jpg,jpeg,png|max:2048',
-            "floor_plan_image" => 'required|mimes:jpg,jpeg,png|max:2048'
+            "floor_plan_image" => 'required|mimes:jpg,jpeg,png|max:2048',
+            "brochure" => 'required|mimes:pdf|max:2048', 
         ]);
-
-        if($request->hasFile('image')){
-
-            $file = $request->File('image');
-            // File Details
+    
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
             $filename = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
-
             $location = 'uploads/admin/property';
-            // Upload file
             $file->move($location, $filename);
-            // File path
-            $property_image_filepath = ($location . "/" . $filename);
+            $property_image_filepath = $location . "/" . $filename;
         }
-
-        if($request->hasFile('floor_plan_image')){
-
-            $file = $request->File('floor_plan_image');
-            // File Details
+    
+        if ($request->hasFile('floor_plan_image')) {
+            $file = $request->file('floor_plan_image');
             $filename = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
-
             $location = 'uploads/admin/floor_plan_image';
-            // Upload file
             $file->move($location, $filename);
-            // File path
-            $floor_plan_image_filepath = ($location . "/" . $filename);
+            $floor_plan_image_filepath = $location . "/" . $filename;
         }
-
+    
+        if ($request->hasFile('brochure')) {
+            $file = $request->file('brochure');
+            $filename = $file->getClientOriginalName();
+            $location = 'uploads/admin/brochures';
+            $file->move($location, $filename);
+            $brochure_filepath = $location . "/" . $filename;
+        }
+    
         $explodeval = implode(",", $request->ameniti_id);
+        $uid = rand(1000, 9999);
+        $slug = Str::slug($request->title . '-' . $request->location, '-');
 
         $Property = new Property;
         $Property->title = $request->title;
+        $Property->slug = $slug;
+        $Property->uid = $uid;
         $Property->image = $property_image_filepath;
         $Property->floor_plan_image = $floor_plan_image_filepath;
+        $Property->brochure = $brochure_filepath; 
         $Property->discriprion = $request->discriprion;
         $Property->property_Area = $request->property_Area;
         $Property->location = $request->location;
@@ -115,14 +117,14 @@ class PropertyController extends Controller
         $Property->upcoming_property = $request->upcoming_property;
         $Property->status = $request->status;
         $Property->save();
-
+    
         if (!$Property) {
             return $this->responseRedirectBack('Error occurred while creating Property.', 'error', true, true);
         }
-
+    
         return redirect()->route('admin.property');
-        // return $this->responseRedirect('admin.options', 'Payout has been created successfully', 'success', false, false);
     }
+    
 
     public function create_property_variation($id){
         return view('admin.property.add_variation', ['id'=>$id]);
@@ -272,7 +274,6 @@ class PropertyController extends Controller
      */
     public function update(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             "title" => ['required'],
             "category" => ['required'],
@@ -286,47 +287,51 @@ class PropertyController extends Controller
             "status"=> ['required'],
             "added_by"=> ['required'],
             "image" => 'nullable|mimes:jpg,jpeg,png|max:2048',
-            "floor_plan_image" => 'nullable|mimes:jpg,jpeg,png|max:2048'
+            "floor_plan_image" => 'nullable|mimes:jpg,jpeg,png|max:2048',
+            "brochure" => 'nullable|mimes:pdf|max:2048' 
         ]);
-
-        if($request->hasFile('image')){
-
-            $file = $request->File('image');
-            // File Details
+    
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
             $filename = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
-
             $location = 'uploads/admin/property';
-            // Upload file
             $file->move($location, $filename);
-            // File path
-            $property_image_filepath = ($location . "/" . $filename);
+            $property_image_filepath = $location . "/" . $filename;
         }
-
-        if($request->hasFile('floor_plan_image')){
-
-            $file = $request->File('floor_plan_image');
-            // File Details
+    
+        if ($request->hasFile('floor_plan_image')) {
+            $file = $request->file('floor_plan_image');
             $filename = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
-
             $location = 'uploads/admin/floor_plan_image';
-            // Upload file
             $file->move($location, $filename);
-            // File path
-            $floor_plan_image_filepath = ($location . "/" . $filename);
+            $floor_plan_image_filepath = $location . "/" . $filename;
         }
-
+    
+        if ($request->hasFile('brochure')) {
+            $file = $request->file('brochure');
+            $filename = $file->getClientOriginalName();
+            $location = 'uploads/admin/brochures'; 
+            $file->move($location, $filename);
+            $brochure_filepath = $location . "/" . $filename;
+        }
+    
         $explodeval = implode(",", $request->ameniti_id);
-
+    
         $Property = Property::find($request->id);
         $Property->title = $request->title;
-        if($request->image){
-        $Property->image = $property_image_filepath;
+        
+        if ($request->hasFile('image')) {
+            $Property->image = $property_image_filepath;
         }
-        if($request->floor_plan_image){
-        $Property->floor_plan_image = $floor_plan_image_filepath;
+    
+        if ($request->hasFile('floor_plan_image')) {
+            $Property->floor_plan_image = $floor_plan_image_filepath;
         }
+    
+        if ($request->hasFile('brochure')) {
+            $Property->brochure = $brochure_filepath;
+        }
+    
         $Property->discriprion = $request->discriprion;
         $Property->property_Area = $request->property_Area;
         $Property->location = $request->location;
@@ -341,14 +346,14 @@ class PropertyController extends Controller
         $Property->upcoming_property = $request->upcoming_property;
         $Property->status = $request->status;
         $Property->save();
-
+    
         if (!$Property) {
-            return $this->responseRedirectBack('Error occurred while creating Property.', 'error', true, true);
+            return $this->responseRedirectBack('Error occurred while updating Property.', 'error', true, true);
         }
-
+    
         return redirect()->route('admin.property');
-        // return $this->responseRedirect('admin.options', 'Payout has been created successfully', 'success', false, false);
     }
+    
 
     /**
      * Remove the specified resource from storage.

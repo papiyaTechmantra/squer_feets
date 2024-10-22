@@ -34,7 +34,7 @@ Route::get('/news/{id}', [IndexController::class, 'news_details'])->name('front.
 Route::post('/subscribers-store', [IndexController::class, 'subscribers_store'])->name('front.subscribers_store');
 Route::get('property/listing', [IndexController::class, 'property_listing'])->name('front.property.listing');
 Route::get('property/listing/{city}', [IndexController::class, 'property_listing_city'])->name('front.property.listing.city');
-Route::get('property/details/{id}', [IndexController::class, 'property_details'])->name('front.property.details');
+Route::get('property/details/{slug}/uid-{uid?}', [IndexController::class, 'property_details'])->name('front.property.details');
 Route::post('/lead', [IndexController::class, 'store_lead'])->name('front.store.lead');
 Route::get('/contact-us', [IndexController::class, 'contact_us'])->name('front.contact_us');
 Route::get('/privacy-policy', [IndexController::class, 'privacy_policy'])->name('front.privacy_policy');
