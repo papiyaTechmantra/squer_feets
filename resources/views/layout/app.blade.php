@@ -168,6 +168,17 @@
                     </div>
                 </div>
             </div>
+            <div class="click-to-call-widget">
+                <a href="tel:+16502158551" class="call-button">
+                    <i class="fas fa-phone-alt"></i>
+                </a>
+            </div>
+
+
+            <a href="https://wa.me/<PHONE_NUMBER>?text=Hello%20I%20have%20an%20inquiry%20about%20your%20property" target="_blank" class="btn btn-success">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+
         </div>
     </footer>
     

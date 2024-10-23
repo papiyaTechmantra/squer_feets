@@ -18,19 +18,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                {{-- <div class="form__select customselect category">
-                                    <label>Category:</label>
-                                    <select class="" name="category" id="category">
-                                        <option value="" selected>Select Category</option>
-                                        <option value="villas">Villas</option>
-                                        <option value="deplux">Deplux</option>
-                                        <option value="apartments">Apartments</option>
-                                    </select>
-                                </div>
-                                <div class="form__select keyword">
-                                    <label>Keywords:</label>
-                                    <input type="text" name="configurations" placeholder="1BHK, 2BHK, 3BHK">
-                                </div> --}}
+                               
                             </div>
                             <input type="submit" class="form__submit" value="Submit" name="">
                     </div>
@@ -62,17 +50,33 @@
                   @foreach ($Property_Images as $Images)
                     <div class="banner_item">
                       <img src="{{ asset($Images->images) }}">
-                      <button id="share-button" class="btn btn-secondary">
-                        <i class="fas fa-share-alt"></i> Share
-                    </button>
+                      
+
                     </div>
-                    <!-- Share Modal -->
                     
-
-                    
-
                   @endforeach
               </div>
+              <button id="share-button" class="btn btn-secondary">
+                        <i class="fas fa-share-alt"></i> Share
+                      </button>
+
+                      <!-- Share Modal -->
+                      <div id="share-modal" class="modal" style="display:none;">
+                        <div class="modal-content">
+                          <span id="close-modal" class="close">&times;</span>
+                          <h2>Share this property</h2>
+                          
+                          <!-- WhatsApp Share -->
+                          <a href="https://wa.me/?text={{ urlencode('Check out this property: ' . route('front.property.details', ['slug' => $Property_details->slug, 'uid' => $Property_details->uid])) }}" target="_blank" class="btn btn-success">
+                            <i class="fab fa-whatsapp"></i> Share on WhatsApp
+                          </a>
+
+                          <!-- Email Share -->
+                          <a href="mailto:?subject=Check out this property&body=Check out this property: {{ route('front.property.details', ['slug' => $Property_details->slug, 'uid' => $Property_details->uid]) }}" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i> Share via Email
+                          </a>
+                        </div>
+                      </div>
               <div class="property_excerpt">
                     <div class="row">
                         <div class="col-sm-9">
@@ -94,7 +98,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="details_card">
               <h3>Overview of {{ $Property_details->title }}</h3>
               <div class="row">
@@ -310,9 +313,6 @@
 
           </div>
           <div class="col-sm-4">
-              
-                
-                
               <div class="details_form">
               <form action="{{ route('front.store.lead') }}" method="post">
                 @csrf
@@ -357,8 +357,6 @@
                   <input type="submit" name="" class="submit_btn" value="Get a quote">
                 </div>
               </form>
-              
-              
               @if (session('success'))
                   <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
@@ -367,10 +365,6 @@
         </div>
       </div>
     </section>
-    
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -378,8 +372,6 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="js/slick.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    
-  
   <script>
   function myFunction(event,value) {
       var total_amount    = $("#total_amount").val();
@@ -420,11 +412,7 @@
       $('#interest_amt').text(CI.toFixed(2));
 
   }
-  
-
-
   </script>
-
     <script type="text/javascript">
       $(document).ready(function(){
         $('.toggle__btn').click(function(){
@@ -506,6 +494,29 @@
       $("#pricemaxValue").val(getSlider.slider('values', 1)+ ' $');
 
     });
+    document.addEventListener('DOMContentLoaded', function () {
+  var shareButton = document.getElementById('share-button');
+  var shareModal = document.getElementById('share-modal');
+  var closeModal = document.getElementById('close-modal');
+
+  // Show modal when share button is clicked
+  shareButton.addEventListener('click', function () {
+    shareModal.style.display = 'block';
+  });
+
+  // Close modal when close button is clicked
+  closeModal.addEventListener('click', function () {
+    shareModal.style.display = 'none';
+  });
+
+  // Close modal when clicking outside the modal content
+  window.addEventListener('click', function (event) {
+    if (event.target === shareModal) {
+      shareModal.style.display = 'none';
+    }
+  });
+});
+
   </script>
 
 @endsection
