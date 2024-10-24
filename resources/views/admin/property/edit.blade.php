@@ -96,7 +96,25 @@
         @error('ameniti_id')
             <p class="small text-danger">{{ $message }}</p>
         @enderror
+        <div>
+        <label class="form-check-label" for="flexCheckDefault">
+            Select Parking
+        </label>
+        @php
+        $parkingId = explode(",", $Property_list->parking_id);
+        // dd($amenityId);
+        @endphp
+        @foreach ($parking_list as $parking)
+        <input class="form-check-input" {{ in_array($parking->id,$parkingId) ? 'checked' : '' }} type="checkbox" value="{{ $parking->id }}" name="parking_id[]" id="parking_id">
+        <label class="form-check-label" for="flexCheckDefault">
+            {{ $parking->name }}
+        </label>
+        @endforeach
 
+        @error('parking_id')
+            <p class="small text-danger">{{ $message }}</p>
+        @enderror
+        </div>
     </br>
 
         <label class="form-check-label" for="flexCheckDefault">

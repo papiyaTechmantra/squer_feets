@@ -77,7 +77,15 @@
             <img src="{{ Asset($Amenity->image) }}" style="width: 30px;" alt="">{{ $Amenity->name }}
         </label>
         @endforeach
-
+        <div>
+        <label class="form-check-label" for="flexCheckDefault">
+            Select Parking Type
+        </label>
+        @foreach ($parking_list as $parking)
+        <input class="form-check-input" type="checkbox" value="{{ $parking->id }}" name="parking_id[]" id="parking_id">
+        {{ $parking->name }}
+        @endforeach
+        </div>
         <input type="text" class="form-control" name="added_by" id="added_by" placeholder="Add By" value="{{ old('added_by') }}">
         @error('added_by')
             <p class="small text-danger">{{ $message }}</p>

@@ -203,7 +203,7 @@ class IndexController extends Controller
     }
 
     public function property_details($slug, $uid) {
-        dd($slug, $uid);
+        // dd($slug, $uid);
         $Property_details = Property::where('slug', $slug)->where('uid', $uid)->firstOrFail();
     
         $Property_variation = Property_variation::where('property_id', $Property_details->id)->get();

@@ -125,6 +125,27 @@
                   <label>RERA ID</label>
                   <p>UPRERAPRJ541330</p>
                 </div>
+                <div class="col-sm-4">
+                <label>Parking</label>
+                  <p>
+                      @php
+                          $parkingId = explode(",", $Property_details->parking_id);
+                          $totalParking = count($parkingId); // Get the total number of parking entries
+                      @endphp
+
+                      @foreach ($parkingId as $key => $parkingData)
+                          @php
+                              $parking = App\Models\Parking::where('id', $parkingData)->first();
+                          @endphp
+
+                          {{ $parking->name }}@if($key != $totalParking - 1), @endif
+                      @endforeach
+                  </p>
+
+
+                </div>
+
+                
               </div>
 
               <h4>{{ $Property_details->subtitle }}</h4>
@@ -166,6 +187,22 @@
                     $Amenity = App\Models\Amenity::where('id', $amenityIds)->first();
                 @endphp
                 <li><img src="{{ asset($Amenity->image) }}" width="15%">{{ $Amenity->name }}</li>
+                @endforeach
+              </ul>
+            </div>
+
+            <div class="details_card">
+              <h3>Parkings of {{$Property_details->title}}</h3>
+              @php
+              $parkingIds = explode(",", $Property_details->parking_id);
+              @endphp
+              
+              <ul class="amenity__list">
+                @foreach ($parkingIds as $parkingId)
+                @php
+                    $parking = App\Models\Parking::where('id', $parkingId)->first();
+                @endphp
+                <li>{{ $parking->name }}</li>
                 @endforeach
               </ul>
             </div>

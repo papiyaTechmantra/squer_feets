@@ -8,6 +8,7 @@ use App\Models\Property;
 use App\Models\Property_image;
 use App\Models\Property_variation;
 use App\Models\Amenity;
+use App\Models\Parking;
 use App\Models\Locality;
 use Illuminate\Support\Str;
 
@@ -38,9 +39,10 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        $Amenity_list=Amenity::all();
+        $Amenity_list=Amenity::Where('status' ,'=' ,'1')->get();
+        $parking_list=Parking::Where('status' ,'=' ,'1')->get();
         $Locality_list=Locality::all();
-        return view('admin.property.create', ['Amenity_list'=>$Amenity_list,'Locality_list'=>$Locality_list]);
+        return view('admin.property.create', ['Amenity_list'=>$Amenity_list,'Locality_list'=>$Locality_list,'parking_list'=>$parking_list]);
     }
 
     /**
@@ -61,6 +63,7 @@ class PropertyController extends Controller
             "property_Status" => ['required'],
             "Configurations" => ['required'],
             "ameniti_id" => ['required'],
+            "parking_id" => ['required'],
             "status" => ['required'],
             "added_by" => ['required'],
             "image" => 'required|mimes:jpg,jpeg,png|max:2048',
@@ -93,6 +96,8 @@ class PropertyController extends Controller
         }
     
         $explodeval = implode(",", $request->ameniti_id);
+        $explodeParking = implode(",", $request->parking_id);
+        
         $uid = rand(1000, 9999);
         $slug = Str::slug($request->title . '-' . $request->location, '-');
 
@@ -110,6 +115,7 @@ class PropertyController extends Controller
         $Property->property_Status = $request->property_Status;
         $Property->Configurations = $request->Configurations;
         $Property->ameniti_id = $explodeval;
+        $Property->parking_id = $explodeParking;
         $Property->added_by = $request->added_by;
         $Property->new_arrival = $request->new_arrival;
         $Property->most_popular = $request->most_popular;
@@ -260,9 +266,10 @@ class PropertyController extends Controller
     public function edit($id)
     {
         $Property_list = Property::find($id);
-        $Amenity_list=Amenity::all();
+        $Amenity_list=Amenity::Where('status' ,'=' ,'1')->get();
+        $parking_list=Parking::Where('status' ,'=' ,'1')->get();
         $Locality_list=Locality::all();
-        return view('admin.property.edit', ['Property_list'=>$Property_list,'Amenity_list'=>$Amenity_list,'Locality_list'=>$Locality_list]);
+        return view('admin.property.edit', ['Property_list'=>$Property_list,'Amenity_list'=>$Amenity_list,'Locality_list'=>$Locality_list,'parking_list'=>$parking_list]);
     }
 
     /**
@@ -284,6 +291,7 @@ class PropertyController extends Controller
             "property_Status" => ['required'],
             "Configurations" => ['required'],
             "ameniti_id" => ['required'],
+            "parking_id" => ['required'],           
             "status"=> ['required'],
             "added_by"=> ['required'],
             "image" => 'nullable|mimes:jpg,jpeg,png|max:2048',
@@ -316,7 +324,8 @@ class PropertyController extends Controller
         }
     
         $explodeval = implode(",", $request->ameniti_id);
-    
+        $explodeParking = implode(",", $request->parking_id);
+        
         $Property = Property::find($request->id);
         $Property->title = $request->title;
         
@@ -339,6 +348,7 @@ class PropertyController extends Controller
         $Property->property_Status = $request->property_Status;
         $Property->Configurations = $request->Configurations;
         $Property->ameniti_id = $explodeval;
+        $Property->parking_id = $explodeParking;
         $Property->added_by = $request->added_by;
         $Property->new_arrival = $request->new_arrival;
         $Property->most_popular = $request->most_popular;

@@ -7,20 +7,43 @@
 <div class="bg-light rounded h-100 p-5">
 
 <div>Title : {{ $Property_list->title }}</div>
-<div>Discription : {{ isset($Property_list->discriprion) ? substr($Property_list->discriprion,0, 50) : "-- Not Available --" }}</div>
+<div>Discription : {!! isset($Property_list->discriprion) ? substr($Property_list->discriprion,0, 50) : "-- Not Available --" !!}</div>
 <div>property Area : {{ $Property_list->property_Area }}</div>
 <div>Property Type : {{ $Property_list->property_Type }}</div>
 <div>Property Status : {{ $Property_list->property_Status }}</div>
 <div>Configurations : {{ $Property_list->Configurations }}</div>
-<div>Amenities : @php
-    $amenityId = explode(",", $Property_list->ameniti_id);
-    foreach ($amenityId as $key => $amenityData) {
-        $Amenity = App\Models\Amenity::where('id', $amenityData)->first();
-        @endphp
-        {{ $Amenity->name }},
+<div>
+    Amenities : 
+    @php
+        $amenityId = explode(",", $Property_list->ameniti_id);
+        $totalAmenities = count($amenityId); // Get the total number of amenities
+    @endphp
 
-        @php  }
-@endphp
+    @foreach ($amenityId as $key => $amenityData)
+        @php
+            $Amenity = App\Models\Amenity::where('id', $amenityData)->first();
+        @endphp
+
+        {{ $Amenity->name }}@if($key != $totalAmenities - 1), @endif
+    @endforeach
+</div>
+
+<div>
+    Parking : 
+    @php
+        $parkingId = explode(",", $Property_list->parking_id);
+        $totalParking = count($parkingId); // Get the total number of items
+    @endphp
+
+    @foreach ($parkingId as $key => $parkingData)
+        @php
+            $parking = App\Models\Parking::where('id', $parkingData)->first();
+        @endphp
+
+        {{ $parking->name }}@if($key != $totalParking - 1), @endif
+    @endforeach
+</div>
+
 <div>Added by : {{ $Property_list->added_by }}</div>
 <div>Status : {{ $Property_list->status == 1 ? 'Active' : 'In-active' }}</div>
 
