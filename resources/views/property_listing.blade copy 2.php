@@ -21,7 +21,7 @@
                         </div>
                         <input type="submit" class="btn btn-primary mt-2" value="Browse" name="">
                     </div>
-                </form>    
+                </form> 
             </div>
         </div>
     </div>
@@ -91,7 +91,7 @@
                                     <div class="card h-100">
                                         <img class="card-img-top" src="{{ asset($listing->image) }}" alt="{{ $listing->title }}">
                                         <div class="card-body">
-                                            <h5><a href="{{ route('front.property.details', ['slug' => $listing->slug, 'uid' => $listing->uid]) }}"">{{ $listing->title }}</a></h5>
+                                            <h5><a href="{{ route('front.property.details', $listing->id) }}">{{ $listing->title }}</a></h5>
                                             <p><i class="fas fa-map-marker-alt"></i> {{ $listing->location }}</p>
                                             <ul class="list-inline">
                                                 <li class="list-inline-item"><i class="fas fa-arrows-alt"></i> {{ $listing->property_Area }} Sqft</li>
@@ -103,7 +103,7 @@
                                             <h6 class="text-danger">₹{{ $listing->price }}</h6>
                                         </div>
                                         <div class="card-footer">
-                                            <a href="{{ route('front.property.details', ['slug' => $listing->slug, 'uid' => $listing->uid]) }}"" class="btn btn-primary w-100">View Details</a>
+                                            <a href="{{ route('front.property.details', $listing->id) }}" class="btn btn-primary w-100">View Details</a>
                                         </div>
                                     </div>
                                 </div>

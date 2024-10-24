@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\{LoginController,BannerController,LocalityController,
-    AmenityController,PropertyController,BlogController,LeadController,NewsController,ReviewController,SubscribersController};
+    AmenityController,PropertyController,BlogController,LeadController,NewsController,ReviewController,ParkingController,SubscribersController};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -111,5 +111,15 @@ Route::auth();
             Route::get('admin/subscribers/details/{id}', [SubscribersController::class, 'show'])->name('admin.subscribers.show');
             Route::post('admin/subscribers/update', [SubscribersController::class, 'update'])->name('admin.subscribers.update');
             Route::get('admin/subscribers/delete/{id}', [SubscribersController::class, 'destroy'])->name('admin.subscribers.delete');
+
+
+            Route::get('admin/parking', [ParkingController::class, 'index'])->name('admin.parking');
+            Route::get('admin/parking/add', [ParkingController::class, 'create'])->name('admin.parking.add');
+            Route::post('admin/parking/add', [ParkingController::class, 'store'])->name('admin.parking.store');
+            Route::get('admin/parking/edit/{id}', [ParkingController::class, 'edit'])->name('admin.parking.edit');
+            Route::get('admin/parking/details/{id}', [ParkingController::class, 'show'])->name('admin.parking.show');
+            Route::post('admin/parking/update', [ParkingController::class, 'update'])->name('admin.parking.update');
+            Route::get('admin/parking/delete/{id}', [ParkingController::class, 'destroy'])->name('admin.parking.delete');
+
 
         });

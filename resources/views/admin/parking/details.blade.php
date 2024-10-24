@@ -2,13 +2,13 @@
 @section('content')
 
 
-<h1 style="color: black">Amenity</h1>
+<h1 style="color: black">Parking</h1>
 
 <div class="bg-light rounded h-100 p-5">
 
-<div>Name : {{ $Amenity_list->name }}</div>
-<div>Status : {{ $Amenity_list->status == 1 ? 'Active' : 'In-active' }}</div>
-<div>Image : <img src="{{ asset($Amenity_list->image) }}" alt="" style="width: 100px;"></div>
+<div>Title : {{ $parking_list->name}}</div>
+<div>Status : {{ $parking_list->status == 1 ? 'Active' : 'In-active' }}</div>
+<div>Image : <img src="{{ asset($parking_list->image) }}" alt="" style="width: 100px;"></div>
 
 
 </div>

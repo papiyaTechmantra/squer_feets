@@ -18,7 +18,7 @@
         @enderror
         <img src="{{ asset($Amenity_list->image) }}" alt="" style="width: 100px;">
         <select class="form-select form-select-lg mb-3" name="status" id="status" aria-label=".form-select-lg example">
-            <option value="" selected>Select Banner Status</option>
+            <option value="" selected>Select Status</option>
             <option value="1" {{ $Amenity_list->status == 1 ? 'selected' : '' }} >Active</option>
             <option value="0" {{ $Amenity_list->status == 0 ? 'selected' : '' }}>In-Active</option>
         </select>
