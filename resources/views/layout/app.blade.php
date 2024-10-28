@@ -175,7 +175,7 @@
             </div>
 
 
-            <a href="https://wa.me/<PHONE_NUMBER>?text=Hello%20I%20have%20an%20inquiry%20about%20your%20property" target="_blank" class="btn btn-success">
+            <a href="https://wa.me/8617207525" target="_blank" class="btn btn-success">
                 <i class="fab fa-whatsapp"></i> Chat on WhatsApp
                 </a>
 

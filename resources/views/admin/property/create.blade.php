@@ -86,6 +86,17 @@
         {{ $parking->name }}
         @endforeach
         </div>
+
+        <div>
+        <label class="form-check-label" for="flexCheckDefault">
+            Select Flat Size Type
+        </label>
+        @foreach ($flat_size_list as $flatsize)
+        <input class="form-check-input" type="checkbox" value="{{ $flatsize->id }}" name="flat_size_id[]" id="flat_size_id">
+        {{ $flatsize->name }}
+        @endforeach
+        </div>
+
         <input type="text" class="form-control" name="added_by" id="added_by" placeholder="Add By" value="{{ old('added_by') }}">
         @error('added_by')
             <p class="small text-danger">{{ $message }}</p>

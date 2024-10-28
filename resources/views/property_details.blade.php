@@ -86,10 +86,15 @@
                                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                     <circle cx="12" cy="10" r="3"></circle>
                                 </svg>
-                                <p>{{ $Property_details->location }}</p>
+                                <p>{{ $Property_details->location }}</p></br>
+                                
+                            </div>
+                            <div>
+                                <i class="fas fa-clock"></i> 
+                                Last Updated Date: {{ $Property_details->updated_at->format('d F, Y') }}
                             </div>
                         </div>
-                        <div class="col-sm-3">
+                         <div class="col-sm-3">
                             <h4>₹ {{ $Property_details->price }}*</h4>
                             <div class="details_card">
                                 <a href="{{ asset($Property_details->brochure) }}" class="btn btn-primary" download>Download Brochure</a>
@@ -101,7 +106,7 @@
             <div class="details_card">
               <h3>Overview of {{ $Property_details->title }}</h3>
               <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-4">  
                   <label>Project Area</label>
                   <p>{{ $Property_details->property_Area }}</p>
                 </div>
@@ -128,7 +133,7 @@
                 <div class="col-sm-4">
                 <label>Parking</label>
                   <p>
-                      @php
+                      @phpn 
                           $parkingId = explode(",", $Property_details->parking_id);
                           $totalParking = count($parkingId); // Get the total number of parking entries
                       @endphp
@@ -138,13 +143,31 @@
                               $parking = App\Models\Parking::where('id', $parkingData)->first();
                           @endphp
 
-                          {{ $parking->name }}@if($key != $totalParking - 1), @endif
+                          {{ $parking?$parking->name:"NA" }}@if($key != $totalParking - 1), @endif
                       @endforeach
                   </p>
 
 
                 </div>
+                <div class="col-sm-4">
+                <label>Size of flat</label>
+                  <p>
+                      @php
+                          $flatsizeId = explode(",", $Property_details->flat_size_id);
+                          $totalFlatsize = count($flatsizeId); // Get the total number of parking entries
+                      @endphp
 
+                      @foreach ($flatsizeId as $key => $flatsizData)
+                          @php
+                              $flatsiz = App\Models\FlatSize::where('id', $flatsizData)->first();
+                          @endphp
+
+                          {{ $flatsiz?$flatsiz->name:"NA" }}@if($key != $totalFlatsize - 1), @endif
+                      @endforeach
+                  </p>
+
+
+                </div>
                 
               </div>
 
@@ -191,21 +214,7 @@
               </ul>
             </div>
 
-            <div class="details_card">
-              <h3>Parkings of {{$Property_details->title}}</h3>
-              @php
-              $parkingIds = explode(",", $Property_details->parking_id);
-              @endphp
-              
-              <ul class="amenity__list">
-                @foreach ($parkingIds as $parkingId)
-                @php
-                    $parking = App\Models\Parking::where('id', $parkingId)->first();
-                @endphp
-                <li>{{ $parking->name }}</li>
-                @endforeach
-              </ul>
-            </div>
+          
 
             <div class="details_card">
               <h3>Specification of {{$Property_details->title}}</h3>

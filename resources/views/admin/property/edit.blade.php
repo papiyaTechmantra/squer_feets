@@ -115,6 +115,30 @@
             <p class="small text-danger">{{ $message }}</p>
         @enderror
         </div>
+
+        <div>
+        <label class="form-check-label" for="flexCheckDefault">
+            Select Flat Size
+        </label>
+
+        @foreach ($flat_size_list as $flatsize)
+            <input class="form-check-input" 
+                {{ in_array($flatsize->id, $selected_flat_size_ids) ? 'checked' : '' }} 
+                type="checkbox" 
+                value="{{ $flatsize->id }}" 
+                name="flat_size_id[]" 
+                id="flat_size_id_{{ $flatsize->id }}">
+
+            <label class="form-check-label" for="flat_size_id_{{ $flatsize->id }}">
+                {{ $flatsize->name }}
+            </label>
+        @endforeach
+
+        @error('flat_size_id')
+            <p class="small text-danger">{{ $message }}</p>
+        @enderror
+
+        </div>
     </br>
 
         <label class="form-check-label" for="flexCheckDefault">

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\{LoginController,BannerController,LocalityController,
-    AmenityController,PropertyController,BlogController,LeadController,NewsController,ReviewController,ParkingController,SubscribersController};
+    AmenityController,PropertyController,BlogController,LeadController,NewsController,ReviewController,ParkingController,SubscribersController,FlatSizeController};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -121,5 +121,14 @@ Route::auth();
             Route::post('admin/parking/update', [ParkingController::class, 'update'])->name('admin.parking.update');
             Route::get('admin/parking/delete/{id}', [ParkingController::class, 'destroy'])->name('admin.parking.delete');
 
-
+            Route::get('admin/flatsize', [FlatSizeController::class, 'index'])->name('admin.flatsize');
+            Route::get('admin/flatsize/add', [FlatSizeController::class, 'create'])->name('admin.flatsize.add');
+            Route::post('admin/flatsize/add', [FlatSizeController::class, 'store'])->name('admin.flatsize.store');
+            Route::get('admin/flatsize/edit/{id}', [FlatSizeController::class, 'edit'])->name('admin.flatsize.edit');
+            Route::get('admin/flatsize/details/{id}', [FlatSizeController::class, 'show'])->name('admin.flatsize.show');
+            Route::post('admin/flatsize/update', [FlatSizeController::class, 'update'])->name('admin.flatsize.update');
+            Route::get('admin/flatsize/delete/{id}', [FlatSizeController::class, 'destroy'])->name('admin.flatsize.delete');
+        
+        
+        
         });
