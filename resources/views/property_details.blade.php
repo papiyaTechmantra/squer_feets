@@ -89,10 +89,14 @@
                                 <p>{{ $Property_details->location }}</p></br>
                                 
                             </div>
+                            <div>  
+                              <p><i class="fas fa-users"></i>Property Group : {{ $Property_details->propertygroup?$Property_details->propertygroup->name:"NA" }}</p>
+                            </div>
                             <div>
                                 <i class="fas fa-clock"></i> 
                                 Last Updated Date: {{ $Property_details->updated_at->format('d F, Y') }}
                             </div>
+                            
                         </div>
                          <div class="col-sm-3">
                             <h4>₹ {{ $Property_details->price }}*</h4>
@@ -106,6 +110,7 @@
             <div class="details_card">
               <h3>Overview of {{ $Property_details->title }}</h3>
               <div class="row">
+                
                 <div class="col-sm-4">  
                   <label>Project Area</label>
                   <p>{{ $Property_details->property_Area }}</p>
@@ -133,7 +138,7 @@
                 <div class="col-sm-4">
                 <label>Parking</label>
                   <p>
-                      @phpn 
+                      @php
                           $parkingId = explode(",", $Property_details->parking_id);
                           $totalParking = count($parkingId); // Get the total number of parking entries
                       @endphp
@@ -174,28 +179,34 @@
               <h4>{{ $Property_details->subtitle }}</h4>
               <p>{!!$Property_details->details!!}</p>
             </div>
+            @if($Property_details->floorplan)
 
             <div class="details_card">
-              <h3>Floor Plan of {{$Property_details->title}}</h3>
 
+              <h3>Floor Plan of {{$Property_details->title}}</h3>
+              @foreach($Property_details->floorplan as $flplan)
               <div class="row">
+
                 <div class="col-sm-8">
-                  <img src="{{ asset($Property_details->floor_plan_image) }}" class="img-fluid">
+                <img src="{{ asset($flplan->image) }}" class="img-fluid">
+                  <!-- <img src="{{ asset($Property_details->floor_plan_image) }}" class="img-fluid"> -->
                 </div>
                 <div class="col-sm-4">
                   <div class="row">
                     <div class="col-sm-12">
                       <label>Built-up Area</label>
-                      <p>{{$Property_details->property_Area}}</p>
+                      <p>{{$flplan->builtup_area}}</p>
                     </div>
                     <div class="col-sm-12">
                       <label>Base Selling Price</label>
-                      <p> ₹ {{$Property_details->price}}</p>
+                      <p> ₹ {{$flplan->base_selling_price}}</p>
                     </div>
                   </div>
                 </div>
               </div>
+              @endforeach
             </div>
+            @endif
 
             <div class="details_card">
               <h3>Amenities of {{$Property_details->title}}</h3>

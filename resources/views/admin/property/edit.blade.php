@@ -21,6 +21,18 @@
         @error('title')
             <p class="small text-danger">{{ $message }}</p>
         @enderror
+        <select class="form-select form-select-lg mb-3" name="property_group_id" id="property_group_id" aria-label=".form-select-lg example">
+            <option value="" selected>Select Property Group</option>
+            @foreach($property_groups as $propertyGroup)
+                <option value="{{ $propertyGroup->id }}" 
+                    {{ $propertyGroup->id == $Property_list->property_group_id ? 'selected' : '' }}>
+                    {{ $propertyGroup->name }}
+                </option>
+            @endforeach
+        </select>
+        @error('property_group_id')
+            <p class="small text-danger">{{ $message }}</p>
+        @enderror
         <textarea class="form-control" name="discriprion" id="discriprion" placeholder="Discription" cols="30" rows="10">{{ $Property_list->discriprion }}</textarea>
         @error('discriprion')
             <p class="small text-danger">{{ $message }}</p>
@@ -67,12 +79,7 @@
 
 
         
-        <label for="floor_plan_image">Upload floor plan image</label>
-        <img src="{{ asset($Property_list->floor_plan_image) }}" alt="" style="width: 100px;">
-        <input type="file" class="form-control" name="floor_plan_image" id="floor_plan_image">
-        @error('floor_plan_image')
-            <p class="small text-danger">{{ $message }}</p>
-        @enderror
+       
 
         <input type="text" class="form-control" name="added_by" id="added_by" placeholder="Add By" value="{{$Property_list->added_by }}">
         @error('added_by')

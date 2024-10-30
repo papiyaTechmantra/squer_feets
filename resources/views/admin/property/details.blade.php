@@ -7,6 +7,7 @@
 <div class="bg-light rounded h-100 p-5">
 
 <div>Title : {{ $Property_list->title }}</div>
+<div>Property Group   : {{ $Property_list->propertygroup?$Property_list->propertygroup->name:"NA"  }}</div>
 <div>Discription : {!! isset($Property_list->discriprion) ? substr($Property_list->discriprion,0, 50) : "-- Not Available --" !!}</div>
 <div>property Area : {{ $Property_list->property_Area }}</div>
 <div>Property Type : {{ $Property_list->property_Type }}</div>

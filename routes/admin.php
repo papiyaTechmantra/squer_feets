@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\{LoginController,BannerController,LocalityController,
-    AmenityController,PropertyController,BlogController,LeadController,NewsController,ReviewController,ParkingController,SubscribersController,FlatSizeController};
+    AmenityController,PropertyController,BlogController,LeadController,NewsController,ReviewController,ParkingController,SubscribersController,FlatSizeController,PropertyGroupController,FloorPlanController};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -129,6 +129,21 @@ Route::auth();
             Route::post('admin/flatsize/update', [FlatSizeController::class, 'update'])->name('admin.flatsize.update');
             Route::get('admin/flatsize/delete/{id}', [FlatSizeController::class, 'destroy'])->name('admin.flatsize.delete');
         
-        
+            Route::get('admin/propertygroup', [PropertyGroupController::class, 'index'])->name('admin.propertygroup');
+            Route::get('admin/propertygroup/add', [PropertyGroupController::class, 'create'])->name('admin.propertygroup.add');
+            Route::post('admin/propertygroup/add', [PropertyGroupController::class, 'store'])->name('admin.propertygroup.store');
+            Route::get('admin/propertygroup/edit/{id}', [PropertyGroupController::class, 'edit'])->name('admin.propertygroup.edit');
+            Route::get('admin/propertygroup/details/{id}', [PropertyGroupController::class, 'show'])->name('admin.propertygroup.show');
+            Route::post('admin/propertygroup/update', [PropertyGroupController::class, 'update'])->name('admin.propertygroup.update');
+            Route::get('admin/propertygroup/delete/{id}', [PropertyGroupController::class, 'destroy'])->name('admin.propertygroup.delete');
+
+            Route::get('admin/floorplan', [FloorPlanController::class, 'index'])->name('admin.floorplan');
+            Route::get('admin/floorplan/add', [FloorPlanController::class, 'create'])->name('admin.floorplan.add');
+            Route::post('admin/floorplan/add', [FloorPlanController::class, 'store'])->name('admin.floorplan.store');
+            Route::get('admin/floorplan/edit/{id}', [FloorPlanController::class, 'edit'])->name('admin.floorplan.edit');
+            Route::get('admin/floorplan/details/{id}', [FloorPlanController::class, 'show'])->name('admin.floorplan.show');
+            Route::post('admin/floorplan/update', [FloorPlanController::class, 'update'])->name('admin.floorplan.update');
+            Route::get('admin/floorplan/delete/{id}', [FloorPlanController::class, 'destroy'])->name('admin.floorplan.delete');
+
         
         });

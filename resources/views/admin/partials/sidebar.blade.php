@@ -27,10 +27,12 @@
             
             <a href="{{ route('admin.banner') }}" class="nav-item nav-link {{ request()->is('admin/banner*') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Banner Management</a>
             <a href="{{ route('admin.property') }}" class="nav-item nav-link {{ request()->is('admin/property*') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Property Management</a>
+            <a href="{{ route('admin.floorplan') }}" class="nav-item nav-link {{ request()->is('admin/floorplan*') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Floor Plan Management</a>
             <a href="{{ route('admin.locality') }}" class="nav-item nav-link {{ request()->is('admin/locality*') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Locality Management</a>
             <a href="{{ route('admin.amenity') }}" class="nav-item nav-link {{ request()->is('admin/amenity*') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Amenity Management</a>
             <a href="{{ route('admin.parking') }}" class="nav-item nav-link {{ request()->is('admin/parking*') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Parking Management</a>
             <a href="{{ route('admin.flatsize') }}" class="nav-item nav-link {{ request()->is('admin/flatsize*') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Flat Size Management</a>
+            <a href="{{ route('admin.propertygroup') }}" class="nav-item nav-link {{ request()->is('admin/propertygroup*') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Property Group Management</a>
             <a href="{{ route('admin.blog') }}" class="nav-item nav-link {{ request()->is('admin/blog*') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Blog Management</a>
             <a href="{{ route('admin.lead') }}" class="nav-item nav-link {{ request()->is('admin/lead*') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Lead Management</a>
             <a href="{{ route('admin.news') }}" class="nav-item nav-link {{ request()->is('admin/news*') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>News Management</a>

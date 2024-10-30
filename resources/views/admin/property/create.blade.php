@@ -20,6 +20,17 @@
         @error('title')
             <p class="small text-danger">{{ $message }}</p>
         @enderror
+        <div>
+        <select class="form-select form-select-lg mb-3" name="property_group_id" id="property_group_id" aria-label=".form-select-lg example">
+            <option value="" selected>Select Property Group</option>
+            @foreach($property_groups as $propertyGroup)
+            <<option value="{{ $propertyGroup->id }}">{{ $propertyGroup->name }}</option>
+            @endforeach
+        </select>
+        @error('property_group_id')
+            <p class="small text-danger">{{ $message }}</p>
+        @enderror
+        </div>
         <textarea class="form-control" name="discriprion" id="discriprion" placeholder="Discription" cols="30" rows="10"></textarea>
         @error('discriprion')
             <p class="small text-danger">{{ $message }}</p>
@@ -56,11 +67,7 @@
             <p class="small text-danger">{{ $message }}</p>
         @enderror
         
-        <label for="floor_plan_image">Upload floor plan image</label>
-        <input type="file" class="form-control" name="floor_plan_image" id="floor_plan_image">
-        @error('floor_plan_image')
-            <p class="small text-danger">{{ $message }}</p>
-        @enderror
+
 
         <label for="brochure">Upload Brochure</label>
         <input type="file" class="form-control" name="brochure" id="brochure">

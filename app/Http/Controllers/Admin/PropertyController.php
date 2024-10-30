@@ -11,6 +11,7 @@ use App\Models\Amenity;
 use App\Models\Parking;
 use App\Models\FlatSize;
 use App\Models\Locality;
+use App\Models\PropertyGroup;
 use Illuminate\Support\Str;
 
 
@@ -43,8 +44,9 @@ class PropertyController extends Controller
         $Amenity_list=Amenity::Where('status' ,'=' ,'1')->get();
         $parking_list=Parking::Where('status' ,'=' ,'1')->get();
         $flat_size_list=FlatSize::Where('status' ,'=' ,'1')->get();
+        $property_groups = PropertyGroup::where('status', '1')->get();
         $Locality_list=Locality::all();
-        return view('admin.property.create', ['Amenity_list'=>$Amenity_list,'Locality_list'=>$Locality_list,'parking_list'=>$parking_list,'flat_size_list'=>$flat_size_list]);
+        return view('admin.property.create', ['Amenity_list'=>$Amenity_list,'Locality_list'=>$Locality_list,'parking_list'=>$parking_list,'flat_size_list'=>$flat_size_list,'property_groups'=>$property_groups]);
     }
 
     /**
@@ -70,7 +72,8 @@ class PropertyController extends Controller
             "status" => ['required'],
             "added_by" => ['required'],
             "image" => 'required|mimes:jpg,jpeg,png|max:2048',
-            "floor_plan_image" => 'required|mimes:jpg,jpeg,png|max:2048',
+            // "floor_plan_image" => 'required|mimes:jpg,jpeg,png|max:2048',
+            // 'floor_plan_image.*' => 'required|mimes:jpg,jpeg,png|max:2048',
             "brochure" => 'required|mimes:pdf|max:2048', 
         ]);
     
@@ -82,13 +85,15 @@ class PropertyController extends Controller
             $property_image_filepath = $location . "/" . $filename;
         }
     
-        if ($request->hasFile('floor_plan_image')) {
-            $file = $request->file('floor_plan_image');
-            $filename = $file->getClientOriginalName();
-            $location = 'uploads/admin/floor_plan_image';
-            $file->move($location, $filename);
-            $floor_plan_image_filepath = $location . "/" . $filename;
-        }
+        // if ($request->hasFile('floor_plan_image')) {
+        //     $floor_plan_image_filepath = [];
+        //     foreach ($request->file('floor_plan_image') as $file) {
+        //         $filename = time() . '_' . $file->getClientOriginalName();
+        //         $location = 'uploads/admin/floor_plan_image';
+        //         $file->move($location, $filename);
+        //         $floor_plan_image_filepath[] = $location . "/" . $filename;
+        //     }
+        // }
     
         if ($request->hasFile('brochure')) {
             $file = $request->file('brochure');
@@ -107,10 +112,11 @@ class PropertyController extends Controller
 
         $Property = new Property;
         $Property->title = $request->title;
+        $Property->property_group_id = $request->property_group_id;
         $Property->slug = $slug;
         $Property->uid = $uid;
         $Property->image = $property_image_filepath;
-        $Property->floor_plan_image = $floor_plan_image_filepath;
+        // $Property->floor_plan_image =json_encode($floor_plan_image_filepath);
         $Property->brochure = $brochure_filepath; 
         $Property->discriprion = $request->discriprion;
         $Property->property_Area = $request->property_Area;
@@ -273,6 +279,7 @@ class PropertyController extends Controller
         $Property_list = Property::find($id);
         $Amenity_list = Amenity::where('status', '1')->get();
         $parking_list = Parking::where('status', '1')->get();
+        $property_groups = PropertyGroup::where('status', '1')->get();
         $flat_size_list = FlatSize::where('status', '1')->get();
         $Locality_list = Locality::all();
         
@@ -285,6 +292,7 @@ class PropertyController extends Controller
             'Locality_list' => $Locality_list,
             'parking_list' => $parking_list,
             'flat_size_list' => $flat_size_list,
+            'property_groups' => $property_groups,
             'selected_flat_size_ids' => $selected_flat_size_ids
         ]);
     }
@@ -314,7 +322,7 @@ class PropertyController extends Controller
             "status"=> ['required'],
             "added_by"=> ['required'],
             "image" => 'nullable|mimes:jpg,jpeg,png|max:2048',
-            "floor_plan_image" => 'nullable|mimes:jpg,jpeg,png|max:2048',
+            // "floor_plan_image" => 'nullable|mimes:jpg,jpeg,png|max:2048',
             "brochure" => 'nullable|mimes:pdf|max:2048' 
         ]);
     
@@ -326,13 +334,13 @@ class PropertyController extends Controller
             $property_image_filepath = $location . "/" . $filename;
         }
     
-        if ($request->hasFile('floor_plan_image')) {
-            $file = $request->file('floor_plan_image');
-            $filename = $file->getClientOriginalName();
-            $location = 'uploads/admin/floor_plan_image';
-            $file->move($location, $filename);
-            $floor_plan_image_filepath = $location . "/" . $filename;
-        }
+        // if ($request->hasFile('floor_plan_image')) {
+        //     $file = $request->file('floor_plan_image');
+        //     $filename = $file->getClientOriginalName();
+        //     $location = 'uploads/admin/floor_plan_image';
+        //     $file->move($location, $filename);
+        //     $floor_plan_image_filepath = $location . "/" . $filename;
+        // }
     
         if ($request->hasFile('brochure')) {
             $file = $request->file('brochure');
@@ -348,14 +356,15 @@ class PropertyController extends Controller
         
         $Property = Property::find($request->id);
         $Property->title = $request->title;
+        $Property->property_group_id = $request->property_group_id;
         
         if ($request->hasFile('image')) {
             $Property->image = $property_image_filepath;
         }
     
-        if ($request->hasFile('floor_plan_image')) {
-            $Property->floor_plan_image = $floor_plan_image_filepath;
-        }
+        // if ($request->hasFile('floor_plan_image')) {
+        //     $Property->floor_plan_image = $floor_plan_image_filepath;
+        // }
     
         if ($request->hasFile('brochure')) {
             $Property->brochure = $brochure_filepath;

@@ -25,7 +25,7 @@
                                         <div class="form__select customselect where">
                                             <label>Where:</label>
                                             <select class="" name="location" id="location">
-                                                <option value="" selected="selected">Location...</option>
+                                                 <option value="" selected="selected">Location...</option>
                                                 @foreach ($Locality as $Localities)
                                                     <option value="{{ $Localities->name }}">{{ $Localities->name }}</option>
                                                 @endforeach

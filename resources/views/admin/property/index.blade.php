@@ -88,6 +88,7 @@
                     </div>
                 </td>
                 <td>{{ $Property->title }}</td>
+                <td>{{ $Property->propertygroup?$Property->propertygroup->name:"NA" }}</td>
                 <td>{{ isset($Property->discriprion) ? substr($Property->discriprion,0, 50) : "-- Not Available --" }}</td>
                 <td>{{ $Property->property_Area }}</td>
                 <td>{{ $Property->location }}</td>

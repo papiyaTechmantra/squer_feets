@@ -17,4 +17,12 @@ class Property extends Model
     public function PropertyVariation() {
         return $this->hasMany('App\Models\Property_variation', 'property_id', 'id');
     }
+
+    public function propertygroup() {
+        return $this->belongsTo('App\Models\PropertyGroup', 'property_group_id', 'id');
+    }
+
+    public function floorplan() {
+        return $this->hasMany('App\Models\FloorPlan', 'property_id', 'id');
+    }
 }
